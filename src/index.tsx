@@ -5,6 +5,8 @@ import { graphql, PreloadedQuery, usePreloadedQuery } from "react-relay";
 import { RelayEnvironmentProvider } from "./context/relay-environment";
 import { useRelayQueryLoader } from "./hooks/use-relay-query-loader";
 import { ContinentRef, Continents } from "./components/continents";
+import { Countries } from "./components/countries";
+
 import { src_Query } from "./__generated__/src_Query.graphql";
 
 const AppQuery = graphql`
@@ -16,27 +18,30 @@ const AppQuery = graphql`
 const AppImpl: React.FC<{
   queryRef: PreloadedQuery<src_Query>;
 }> = ({ queryRef }) => {
-  const [continentSelected, setContinentSelected] = useState<ContinentRef>();
   const queryData = usePreloadedQuery(AppQuery, queryRef);
+  const [continentRef, setContinentRef] = useState<ContinentRef>();
 
   if (!queryData) {
     return null;
   }
 
-  console.log(continentSelected);
-
   return (
     <div>
       <h1>🏴‍☠️ Ahoy! Let's raid some country</h1>
 
-      <h3>🌎 Pick a continent</h3>
+      <h2>🗺 Pick a continent</h2>
       <Continents
-        selected={continentSelected?.code}
-        onSelect={setContinentSelected}
+        selected={continentRef?.code}
+        onSelect={setContinentRef}
         queryRef={queryData}
       />
 
-      <h3>🗺 These are the countries we can invade </h3>
+      {continentRef && (
+        <>
+          <h2>💰 These are the countries we can loot 🤑🤑🤑🤑🤑 </h2>
+          <Countries queryRef={continentRef} />
+        </>
+      )}
     </div>
   );
 };

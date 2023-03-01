@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4b1c6a5fd38339b62f41be50eb4664bc>>
+ * @generated SignedSource<<2f9efb32445126e38a644682ac6b64e5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,6 +14,7 @@ export type continents_Fragment$data = {
   readonly continents: ReadonlyArray<{
     readonly code: string | null;
     readonly name: string | null;
+    readonly " $fragmentSpreads": FragmentRefs<"countries_Fragment">;
   } | null>;
   readonly " $fragmentType": "continents_Fragment";
 };
@@ -49,6 +50,11 @@ const node: ReaderFragment = {
           "kind": "ScalarField",
           "name": "name",
           "storageKey": null
+        },
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "countries_Fragment"
         }
       ],
       "storageKey": null
@@ -58,6 +64,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "4c02307ecc92aad108a1ebb8a1dd1ceb";
+(node as any).hash = "4bea4ca77e395b7e6523823c808c181d";
 
 export default node;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { graphql, useFragment } from "react-relay";
 
 import {
@@ -11,6 +11,7 @@ const ContinentsFragment = graphql`
     continents {
       code
       name
+      ...countries_Fragment
     }
   }
 `;
@@ -41,7 +42,9 @@ export const Continents: React.FC<{
   return (
     <div>
       <select onChange={handleContinentSelected}>
-        <option>Continents available</option>
+        <option hidden disabled selected>
+          -- available continents --
+        </option>
         {continents.map((continent) => (
           <option
             key={continent.code}

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<91b8d6c0c43a69ed04b3a7a476aef99e>>
+ * @generated SignedSource<<35b7306826a1b42e23610f2106bdc8b0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,7 +19,22 @@ export type src_Query = {
   variables: src_Query$variables;
 };
 
-const node: ConcreteRequest = {
+const node: ConcreteRequest = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "code",
+  "storageKey": null
+},
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+};
+return {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -49,18 +64,19 @@ const node: ConcreteRequest = {
         "name": "continents",
         "plural": true,
         "selections": [
+          (v0/*: any*/),
+          (v1/*: any*/),
           {
             "alias": null,
             "args": null,
-            "kind": "ScalarField",
-            "name": "code",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "name",
+            "concreteType": "Country",
+            "kind": "LinkedField",
+            "name": "countries",
+            "plural": true,
+            "selections": [
+              (v0/*: any*/),
+              (v1/*: any*/)
+            ],
             "storageKey": null
           }
         ],
@@ -69,14 +85,15 @@ const node: ConcreteRequest = {
     ]
   },
   "params": {
-    "cacheID": "8e96cc0781a296075d3598c1de46e37b",
+    "cacheID": "fe653d227b237b309422af806d2c7294",
     "id": null,
     "metadata": {},
     "name": "src_Query",
     "operationKind": "query",
-    "text": "query src_Query {\n  ...continents_Fragment\n}\n\nfragment continents_Fragment on Query {\n  continents {\n    code\n    name\n  }\n}\n"
+    "text": "query src_Query {\n  ...continents_Fragment\n}\n\nfragment continents_Fragment on Query {\n  continents {\n    code\n    name\n    ...countries_Fragment\n  }\n}\n\nfragment countries_Fragment on Continent {\n  name\n  countries {\n    code\n    name\n  }\n}\n"
   }
 };
+})();
 
 (node as any).hash = "f999e243b73077c28a512308b3ae8782";
 
