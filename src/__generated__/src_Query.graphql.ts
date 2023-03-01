@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<35b7306826a1b42e23610f2106bdc8b0>>
+ * @generated SignedSource<<9facde5551fabdd62557852585d25158>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,7 +12,10 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type src_Query$variables = {};
 export type src_Query$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"continents_Fragment">;
+  readonly continents: ReadonlyArray<{
+    readonly code: string | null;
+    readonly " $fragmentSpreads": FragmentRefs<"continents_Fragment" | "countries_Fragment">;
+  } | null>;
 };
 export type src_Query = {
   response: src_Query$data;
@@ -42,9 +45,26 @@ return {
     "name": "src_Query",
     "selections": [
       {
+        "alias": null,
         "args": null,
-        "kind": "FragmentSpread",
-        "name": "continents_Fragment"
+        "concreteType": "Continent",
+        "kind": "LinkedField",
+        "name": "continents",
+        "plural": true,
+        "selections": [
+          (v0/*: any*/),
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "continents_Fragment"
+          },
+          {
+            "args": null,
+            "kind": "FragmentSpread",
+            "name": "countries_Fragment"
+          }
+        ],
+        "storageKey": null
       }
     ],
     "type": "Query",
@@ -85,16 +105,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "fe653d227b237b309422af806d2c7294",
+    "cacheID": "20f4f561355b1ff598ac43377f257195",
     "id": null,
     "metadata": {},
     "name": "src_Query",
     "operationKind": "query",
-    "text": "query src_Query {\n  ...continents_Fragment\n}\n\nfragment continents_Fragment on Query {\n  continents {\n    code\n    name\n    ...countries_Fragment\n  }\n}\n\nfragment countries_Fragment on Continent {\n  name\n  countries {\n    code\n    name\n  }\n}\n"
+    "text": "query src_Query {\n  continents {\n    code\n    ...continents_Fragment\n    ...countries_Fragment\n  }\n}\n\nfragment continents_Fragment on Continent {\n  code\n  name\n}\n\nfragment countries_Fragment on Continent {\n  name\n  countries {\n    code\n    name\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f999e243b73077c28a512308b3ae8782";
+(node as any).hash = "15f99c5db3c4a21c31547a7bcb834df1";
 
 export default node;

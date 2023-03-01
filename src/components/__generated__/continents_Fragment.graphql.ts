@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2f9efb32445126e38a644682ac6b64e5>>
+ * @generated SignedSource<<11e58485b8323b5ec37d94a8f246e5a2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,60 +10,43 @@
 
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type continents_Fragment$data = {
-  readonly continents: ReadonlyArray<{
-    readonly code: string | null;
-    readonly name: string | null;
-    readonly " $fragmentSpreads": FragmentRefs<"countries_Fragment">;
-  } | null>;
+export type continents_Fragment$data = ReadonlyArray<{
+  readonly code: string | null;
+  readonly name: string | null;
   readonly " $fragmentType": "continents_Fragment";
-};
-export type continents_Fragment$key = {
+}>;
+export type continents_Fragment$key = ReadonlyArray<{
   readonly " $data"?: continents_Fragment$data;
   readonly " $fragmentSpreads": FragmentRefs<"continents_Fragment">;
-};
+}>;
 
 const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "plural": true
+  },
   "name": "continents_Fragment",
   "selections": [
     {
       "alias": null,
       "args": null,
-      "concreteType": "Continent",
-      "kind": "LinkedField",
-      "name": "continents",
-      "plural": true,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "code",
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "kind": "ScalarField",
-          "name": "name",
-          "storageKey": null
-        },
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "countries_Fragment"
-        }
-      ],
+      "kind": "ScalarField",
+      "name": "code",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "name",
       "storageKey": null
     }
   ],
-  "type": "Query",
+  "type": "Continent",
   "abstractKey": null
 };
 
-(node as any).hash = "4bea4ca77e395b7e6523823c808c181d";
+(node as any).hash = "98bc137d00ce96ce9d1181858b4991f3";
 
 export default node;
